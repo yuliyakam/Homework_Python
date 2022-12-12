@@ -43,25 +43,28 @@ def game(name, bank, step):
     print(name +", cколько монет вы хотите взять? В начале игры вы решили брать не больше " + str(step) + " монет ")
     while bank > 0:
         hod = int(input("Ваша ставка: "))
-        bank -= hod
-        print("Осталось " + str(bank) + " монет")
-        count += 1
-        if bank > 0 and bank != step + 2 and bank != 1 and bank != step and bank > step:
-            hod_bot = random.randint(1, step)
-            bank -= hod_bot
-            print("Бот сделал ход = " + str(hod_bot) + " Осталось " + str(bank) + " монет")
+        if hod <= step and hod <= bank:
+            bank -= hod
+            print("Осталось " + str(bank) + " монет")
             count += 1
-        elif bank == step + 2 or bank == 1:
-            hod_bot = 1
-            bank -= hod_bot
-            print("Бот сделал ход = " + str(hod_bot) + " Осталось " + str(bank) + " монет")
-            count += 1
-        elif bank <= step and bank > 0:
-            print("Бот сделал ход = " + str(bank) + " Осталось 0 монет")
-            bank = 0
-            count += 1
+            if bank > 0 and bank != step + 2 and bank != 1 and bank != step and bank > step:
+                hod_bot = random.randint(1, step)
+                bank -= hod_bot
+                print("Бот сделал ход = " + str(hod_bot) + " Осталось " + str(bank) + " монет")
+                count += 1
+            elif bank == step + 2 or bank == 1:
+                hod_bot = 1
+                bank -= hod_bot
+                print("Бот сделал ход = " + str(hod_bot) + " Осталось " + str(bank) + " монет")
+                count += 1
+            elif bank <= step and bank > 0:
+                print("Бот сделал ход = " + str(bank) + " Осталось 0 монет")
+                bank = 0
+                count += 1
+            else:
+                break
         else:
-            break
+            print("Вы хотите взять слишком много!")
 
     if count % 2:
         print(name + ", ты победитель, ПОЗДРАВЛЯЮ!")
@@ -89,8 +92,15 @@ def game_bot(name, bank, step):
             count += 1
         if bank > 0:
             gamer_hod = int(input("Ваша ставка: "))
-            bank -= gamer_hod
-            count += 1
+            if gamer_hod <= step and hod <= bank:
+                bank -= gamer_hod
+                count += 1
+            else:
+                while gamer_hod > step:
+                    print("Вы хотите взять слишком много! Cтавка должна быть не больше  " + f"{step}")
+                    gamer_hod = int(input("Ваша ставка: "))
+                bank -= gamer_hod
+                count += 1
         else:
             break
 
