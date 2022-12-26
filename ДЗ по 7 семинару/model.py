@@ -35,3 +35,10 @@ def insert_abonent(abonent_first_name, abonent_name, abonent_tel):
     with open("spravochnic_csv", mode="a", encoding="utf-8") as w_file:
         file_writer = csv.writer(w_file, delimiter=";", lineterminator="\r")
         file_writer.writerow([abonent_first_name, abonent_name, int(abonent_tel)])
+def find(abonent_first_name):
+    with open('spravochnic_csv', 'r', encoding="utf8", newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter=';')
+        data = list(reader)
+        for row in data:
+            if abonent_first_name in row:
+                print(*row)
