@@ -5,15 +5,15 @@
 
 # print("Введите вещественное число\n")
 # sum = 0
-# str = input()
-# for i in range(len(str)):
-#     if str[i].isdigit():
-#         sum += int(str[i])
+# str = input()                             # Код Лили
+# for i in range(len(str)):             # for i in str:
+#     if str[i].isdigit():              #   if i.isdigit():
+#         sum += int(str[i])                    # sum += int(i)
 # print("Сумма цифр числа = ", sum)
 
 # №2 Напишите программу, которая принимает на вход число N и выдает набор произведений чисел от 1 до N.
 # Пример:
-# пусть N = 4, тогда [ 1, 2, 6, 24 ] (1, 12, 123, 1234)
+# пусть N = 4, тогда [ 1, 2, 6, 24 ] (1, 1*2, 1*2*3, 1*2*3*4)
 
 # count = 1
 #
@@ -33,7 +33,8 @@
 #     summa = summa + (1+1/i) ** i
 # print(round(summa, 2))
 
-# №4 Задайте числами список из N элементов, заполненных из промежутка [-N, N]. Найдите произведение элементов на указанных позициях. Позиции хранятся в файле file.txt в одной строке одно число.
+# №4 Задайте числами список из N элементов, заполненных из промежутка [-N, N]. Найдите произведение элементов на указан
+# ных позициях. Позиции хранятся в файле file.txt в одной строке одно число.
 #           Решение, где номера позиций множителей находятся в программе:
 # list = []
 # position_list = []
@@ -83,12 +84,12 @@ while count != 0:
         data.write('\n')
         count -= 1
 
-# Открытие файла для получения данных
-path = 'file.txt'
-data = open(path, 'r')
-for line in data:
-    product = list[int(line)] * product
-data.close()
+# Открытие файла для получения данных           # with open('file.txt', 'r') as f:
+path = 'file.txt'                                   # inds = f.readlines()
+data = open(path, 'r')                              # multiple = 1
+for line in data:                               # for i in inds:
+    product = list[int(line)] * product             # multiple *= list[int(i)]
+data.close()                                    # print(multiple)
 
 print('\n', 'Произведение = ', product)
 
@@ -118,6 +119,13 @@ print('\n', 'Произведение = ', product)
 # for i in range(len(list)):
 #     mixed_list.append(list[positoin[i]])
 # print(mixed_list, end=' ')
+#               Третий способ:
+# import random
+# numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+# for i in range(0, len(numbers)):
+#     k = random.randint(0, len(numbers) - 1)
+#     numbers[i], numbers[k] = numbers[k], numbers[i]
+# print(numbers)
 
 
 

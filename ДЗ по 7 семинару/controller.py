@@ -23,3 +23,6 @@ def main_function():
         answer = input("Хотите добавить запись в xml файл? Если да, нажмите 1 ")
         if answer == '1':
             xml_generator.create(abonent_first_name, abonent_name, abonent_tel)
+    elif select == 6:
+        abonent_first_name = view.find_contact()
+        model.find(abonent_first_name)
